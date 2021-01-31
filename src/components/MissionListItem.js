@@ -7,9 +7,10 @@ const MissionListItem = (props) => {
   const toggleListItem = () => {
     setOpen(!open);
   };
-
-  const convertTimeStamp = (timestamp) => {
-    return new Date(timestamp * 1000).toLocaleDateString();
+  console.log(props)
+  const convertTimeStamp = (timestamp, callback) => {
+    let dateString = new Date(timestamp * 1000).toLocaleDateString()
+    return timestamp === null ? "N/A" : dateString 
   };
 
   return (
