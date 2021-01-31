@@ -1,36 +1,44 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  TouchableWithoutFeedback,
-  StyleSheet,
-} from "react-native";
-import MissionListItem from "./MissionListItem"
-
+import { View, Text, TouchableWithoutFeedback, StyleSheet } from "react-native";
+import MissionListItem from "./MissionListItem";
+import Icon from "react-native-vector-icons/MaterialIcons";
 
 const AccordionListItem = ({ title, children }) => {
   const [open, setOpen] = useState(false);
   const toggleListItem = () => {
     setOpen(!open);
   };
-
   return (
     <View>
       <TouchableWithoutFeedback onPress={() => toggleListItem()}>
         <View style={styles.titleContainer}>
-          <Text>{title}</Text>
+          <Text style={styles.titleText}>{title}</Text>
+          <Icon
+            name={open ? "keyboard-arrow-up" : "keyboard-arrow-down"}
+            size={30}
+            color={"#000"}
+          />
         </View>
       </TouchableWithoutFeedback>
-      {open ? <View style={styles.bodyContainer}>
-        {children.map(mission => {
-        return (
-          <View>
-            <MissionListItem missionTitle={mission.mission_name}>{children}</MissionListItem>
-            <Text key={mission.mission_name}>{mission.mission_name}</Text>
-          </View>
-        );}
-        )}
-        </View> : null}
+
+      {open ? (
+        <View style={styles.bodyContainer}>
+          {children.length === 0 ? (
+            <Text>There is no information about any missions yet</Text>
+          ) : (
+            <View>
+              <Text style={styles.textMissions}>Missions:</Text>
+              {children.map((mission) => {
+                return (
+                  <View key={mission.mission_name}>
+                    <MissionListItem {...mission} />
+                  </View>
+                );
+              })}
+            </View>
+          )}
+        </View>
+      ) : null}
     </View>
   );
 };
@@ -41,18 +49,26 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: 10,
-    paddingLeft: 1,
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderColor: "#EFEFEF",
-    backgroundColor: "#555"
+    marginBottom: 10,
+    padding: 20,
+    paddingLeft: 20,
+    backgroundColor: "#fff",
   },
   bodyContainer: {
     padding: 10,
-    paddingLeft: 1,
-    // position: "absolute",
-    bottom: 0,
+  },
+  titleText: {
+    textTransform: "uppercase",
+    fontWeight: "bold",
+    fontSize: 25,
+  },
+  textMissions: {
+    textTransform: "uppercase",
+    marginBottom: 10,
+    paddingLeft: 10,
+    fontSize: 20,
+    color: "#555",
+    fontWeight: "bold",
   },
 });
 export default AccordionListItem;

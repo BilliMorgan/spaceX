@@ -17,14 +17,16 @@ const Header = () => {
 
 const styles = StyleSheet.create({
   header: {
-    marginTop: 50,
+    marginTop: 30,
     alignItems: "center",
+    borderBottomColor: "#000",
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
   headerText: {
     marginBottom: 5,
     fontSize: 30,
     fontWeight: "bold",
+    color: "#000"
   },
 });
 export default Header;

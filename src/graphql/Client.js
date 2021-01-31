@@ -1,7 +1,6 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { RestLink } from "apollo-link-rest";
 
-
 const restLink = new RestLink({
   endpoints: {
     v1: "https://api.spacexdata.com/v3/rockets",
