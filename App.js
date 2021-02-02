@@ -12,6 +12,8 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState(false);
 
+  // console.log(rocketsInfo)
+
   useEffect(() => {
     requestRockets();
   }, []);
@@ -49,7 +51,8 @@ const App = () => {
       });
   };
   const renderItem = ({ item }) => (
-    <AccordionListItem title={item.rocket_name}>
+    //
+    <AccordionListItem title={item.rocket_name} picture={item.flickr_images} description = {item.description}>
       {item.missions}
     </AccordionListItem>
   );
@@ -78,14 +81,14 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#EFEFEF",
-    color: "#000",
+    backgroundColor: "#000",
+    color: "#fff",
   },
 
   contentContainer: {
     paddingHorizontal: 0,
     paddingVertical: 20,
-    color: "#000",
+    color: "#fff",
     textTransform: "uppercase",
   },
   spinner: {

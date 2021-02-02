@@ -1,9 +1,12 @@
 import React from "react";
-import { StyleSheet, Text, View, FlatList } from "react-native";
-
+import { Text, StyleSheet } from "react-native";
 
 const Error = () => {
-  return <Text>Server error</Text>;
+  return <Text style={styles.error}>Server error</Text>;
 };
-
+const styles = StyleSheet.create({
+  error: {
+    color: "red",
+  },
+});
 export default Error;

@@ -101,6 +101,7 @@ const styles = StyleSheet.create({
   missionTitle: {
     fontSize: 20,
     paddingLeft: 35,
+    color: "#fff"
   },
   wrapper: {
     padding: 10,
@@ -128,6 +129,7 @@ const styles = StyleSheet.create({
   },
   details: {
     textTransform: "uppercase",
+
   },
 });
 export default MissionListItem;
