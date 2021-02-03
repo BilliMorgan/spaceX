@@ -26,8 +26,8 @@ Space X API - https://docs.spacexdata.com/
     "react-native-web": "~0.13.12"
 
 ### To run the app:
-clone repo in your folder and run
-npm install
+Clone repo in your folder and run
+    npm install
 ### To start the app:
-npm start
+    npm start
 To run the app https://expo.io/ is needed

@@ -7,8 +7,8 @@ const MissionListItem = (props) => {
   const toggleListItem = () => {
     setOpen(!open);
   };
-  console.log(props)
-  const convertTimeStamp = (timestamp, callback) => {
+  // console.log(props)
+  const convertTimeStamp = (timestamp) => {
     let dateString = new Date(timestamp * 1000).toLocaleDateString()
     return timestamp === null ? "N/A" : dateString 
   };
@@ -101,6 +101,7 @@ const styles = StyleSheet.create({
   missionTitle: {
     fontSize: 20,
     paddingLeft: 35,
+    color: "#fff"
   },
   wrapper: {
     padding: 10,
@@ -128,6 +129,7 @@ const styles = StyleSheet.create({
   },
   details: {
     textTransform: "uppercase",
+
   },
 });
 export default MissionListItem;

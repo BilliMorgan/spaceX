@@ -3,14 +3,16 @@ import { StyleSheet, Text, View, FlatList } from "react-native";
 import Header from "./src/components/Header";
 import Spinner from "./src/components/Spinner";
 import AccordionListItem from "./src/components/RocketListItem";
+import Error from "./src/components/Error";
 import { client } from "./src/graphql/Client";
 import { infoMissions } from "./src/graphql/Queries";
-import Error from "./src/components/Error";
 
 const App = () => {
   const [rocketsInfo, setRocketsInfo] = useState([]);
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState(false);
+
+  // console.log(rocketsInfo)
 
   useEffect(() => {
     requestRockets();
@@ -49,7 +51,12 @@ const App = () => {
       });
   };
   const renderItem = ({ item }) => (
-    <AccordionListItem title={item.rocket_name}>
+    <AccordionListItem
+      title={item.rocket_name}
+      picture={item.flickr_images}
+      description={item.description}
+      engine = {item.engines}
+    >
       {item.missions}
     </AccordionListItem>
   );
@@ -63,11 +70,13 @@ const App = () => {
           {loading ? (
             <Spinner />
           ) : (
-            <FlatList
-              data={rocketsInfo}
-              renderItem={renderItem}
-              keyExtractor={(item) => item.rocket_id}
-            />
+            <View>
+              <FlatList
+                data={rocketsInfo}
+                renderItem={renderItem}
+                keyExtractor={(item) => item.rocket_id}
+              />
+            </View>
           )}
         </View>
       )}
@@ -78,14 +87,14 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#EFEFEF",
-    color: "#000",
+    backgroundColor: "#000",
+    color: "#fff",
   },
 
   contentContainer: {
     paddingHorizontal: 0,
     paddingVertical: 20,
-    color: "#000",
+    color: "#fff",
     textTransform: "uppercase",
   },
   spinner: {

@@ -3,8 +3,6 @@ import {
   StyleSheet,
   Text,
   View,
-  ActivityIndicator,
-  FlatList,
 } from "react-native";
 
 const Header = () => {
@@ -19,14 +17,14 @@ const styles = StyleSheet.create({
   header: {
     marginTop: 30,
     alignItems: "center",
-    borderBottomColor: "#000",
+    borderBottomColor: "#fff",
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
   headerText: {
     marginBottom: 5,
     fontSize: 30,
     fontWeight: "bold",
-    color: "#000"
+    color: "#fff",
   },
 });
 export default Header;
