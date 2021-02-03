@@ -3,9 +3,9 @@ import { StyleSheet, Text, View, FlatList } from "react-native";
 import Header from "./src/components/Header";
 import Spinner from "./src/components/Spinner";
 import AccordionListItem from "./src/components/RocketListItem";
+import Error from "./src/components/Error";
 import { client } from "./src/graphql/Client";
 import { infoMissions } from "./src/graphql/Queries";
-import Error from "./src/components/Error";
 
 const App = () => {
   const [rocketsInfo, setRocketsInfo] = useState([]);
@@ -51,8 +51,12 @@ const App = () => {
       });
   };
   const renderItem = ({ item }) => (
-    //
-    <AccordionListItem title={item.rocket_name} picture={item.flickr_images} description = {item.description}>
+    <AccordionListItem
+      title={item.rocket_name}
+      picture={item.flickr_images}
+      description={item.description}
+      engine = {item.engines}
+    >
       {item.missions}
     </AccordionListItem>
   );
@@ -66,11 +70,13 @@ const App = () => {
           {loading ? (
             <Spinner />
           ) : (
-            <FlatList
-              data={rocketsInfo}
-              renderItem={renderItem}
-              keyExtractor={(item) => item.rocket_id}
-            />
+            <View>
+              <FlatList
+                data={rocketsInfo}
+                renderItem={renderItem}
+                keyExtractor={(item) => item.rocket_id}
+              />
+            </View>
           )}
         </View>
       )}

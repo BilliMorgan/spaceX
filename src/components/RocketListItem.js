@@ -7,9 +7,10 @@ import {
   ImageBackground,
 } from "react-native";
 import MissionListItem from "./MissionListItem";
+import Chart from "./Chart"
 import Icon from "react-native-vector-icons/MaterialIcons";
 
-const AccordionListItem = ({ title, children, picture, description }) => {
+const AccordionListItem = ({ title, children, picture, description, engine }) => {
   const [open, setOpen] = useState(false);
   const toggleListItem = () => {
     setOpen(!open);
@@ -33,6 +34,7 @@ const AccordionListItem = ({ title, children, picture, description }) => {
       {open ? (
         <View style={styles.bodyContainer}>
           <Text style={styles.description}>{description}</Text>
+          <Chart engineInfo={engine}/>
           {children.length === 0 ? (
             <Text style={styles.description}>
               There is no information about any missions yet
