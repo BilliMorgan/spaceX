@@ -2,6 +2,12 @@
 ## Link:
 https://expo.io/@shimko20/projects/space-x
 
+## Screenshots:
+
+![Screen](./screenshots/First.png)
+![Screen](./screenshots/Second.png)
+![Screen](./screenshots/Third.png)
+
 
 ## Build:
 made with Expo-CLI and React Native/Apollo/Graph QL
